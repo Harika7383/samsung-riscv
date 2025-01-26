@@ -8,5 +8,12 @@ Explore the various RISC-V instruction types: R, I, S, B, U, and J.
 Extract and classify 15 unique RISC-V instructions from the riscv-objdump output of the application code.
 Decode these instructions into their corresponding 32-bit binary representations.<br>
 
-**RISC-V processor data path**<br>
-![Alt text](Task 3/snapshots/RISC-V-processor-datapath.PNG)
+**1. auipc gp, 0x13**
+
+opcode: 0010111 (7 bits)
+
+immediate (imm): 0x13 = 0000 0000 0001 0011 (20 bits)
+
+destination register (rd): gp (3, 5 bits) = 00011
+
+32-bit Code: 0000 0000 0001 0011 | 00011 | 0010111
