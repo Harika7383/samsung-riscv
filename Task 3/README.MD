@@ -89,7 +89,7 @@ destination register (rd): a5 (15, 5 bits) = 01111
 
 32-bit Code: 0000 0000 0000 0010 | 01111 | 0110111<br>
 
-**7.jal ra, **
+**7.jal ra,**
 
 opcode: 1101111 (7 bits)
 
@@ -127,7 +127,7 @@ func3: 000 (3 bits)
 
 32-bit Code: 0000 0000 0000 | 00001 | 000 | 00000 | 1100111<br>
 
-**10. beqz a5, **
+**10. beqz a5,**
 
 opcode: 1100011 (7 bits)
 
