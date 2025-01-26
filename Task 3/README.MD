@@ -9,4 +9,4 @@ Extract and classify 15 unique RISC-V instructions from the riscv-objdump output
 Decode these instructions into their corresponding 32-bit binary representations.<br>
 
 **RISC-V processor data path**<br>
-
+![Alt text](Task 3/snapshots/RISC-V-processor-datapath.PNG)
