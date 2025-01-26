@@ -10,17 +10,25 @@ Decode these instructions into their corresponding 32-bit binary representations
 
 **1. auipc gp, 0x13**
 opcode: 0010111 (7 bits)
+
 immediate (imm): 0x13 = 0000 0000 0001 0011 (20 bits)
+
 destination register (rd): gp (3, 5 bits) = 00011
+
 32-bit Code: 0000 0000 0001 0011 | 00011 | 0010111<br>
 
 **2. addi gp, gp, 0**
 
 opcode: 0010011 (7 bits)
+
 immediate (imm): 0 = 0000 0000 0000 (12 bits)
+
 source register (rs1): gp (3, 5 bits) = 00011
+
 destination register (rd): gp (3, 5 bits) = 00011
+
 func3: 000 (3 bits)
+
 32-bit Code: 0000 0000 0000 | 00011 | 000 | 00011 | 0010011<br>
 
 **3. sd ra, 8(sp)**
@@ -119,7 +127,7 @@ func3: 000 (3 bits)
 
 32-bit Code: 0000 0000 0000 | 00001 | 000 | 00000 | 1100111<br>
 
-**10.beqz a5, **
+**10. beqz a5, **
 
 opcode: 1100011 (7 bits)
 
