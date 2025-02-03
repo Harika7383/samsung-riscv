@@ -40,8 +40,6 @@ To see the output waveform in GTKWave, enter the following commands:
 $ gtkwave iiitb_rv32i.vcd
 ```
 
-![Alt text](SNAPSHOTS/GTK_wave_window.PNG)
-
 ----
 
 ### 4.3 INSTRUCTION SET OF RISC-V RV32I
@@ -94,7 +92,6 @@ The RISC-V RV32I instruction set forms the foundation of the RV32I architecture,
 
 This lightweight and versatile instruction set is a core component of RISC-V-based systems.
 
-![Alt text](SNAPSHOTS/INSTRUCTION_SET_OF_RISC-V_RV32I.PNG)
 
 ---
 ### 4.4 RISC-V RV32I Instruction Memory Initialization
@@ -105,7 +102,6 @@ This document provides an overview of the **Verilog memory initialization for RI
 
 The following code initializes a memory block (`MEM`) with RISC-V RV32I machine instructions.
 
-![Alt text](SNAPSHOTS/Instruction.PNG)
 
 #### RISC-V RV32I Instruction Tables
 
@@ -170,7 +166,6 @@ This instruction adds the immediate value 5 to the contents of register R4 and s
 **Waveform Representation:**  
 The value of R4 will be incremented by 5, and the result will be stored in R12.
 
-   ![Alt text](SNAPSHOTS/ADDI_R12,R4,5.PNG)
 
    ---
    
@@ -180,7 +175,6 @@ This instruction adds the values of registers R2 and R1, storing the result in r
 **Waveform Representation:**  
 The sum of R2 and R1 will be displayed on the waveform, and the result will be reflected in R6.
 
- ![Alt text](SNAPSHOTS/ADD_R6,R2,R1.PNG)
 
  ---
 
@@ -190,8 +184,6 @@ This instruction performs a bitwise AND operation on the values in registers R1 
 **Waveform Representation:**  
 The bitwise AND operation between R1 and R3 will be shown, and the result will be in R8.
 
- ![Alt text](SNAPSHOTS/AND_R8,R1,R3.PNG)
-
  ---
 
  #### BEQ R0, R0, 15
@@ -200,7 +192,6 @@ The BEQ (branch if equal) instruction checks if the contents of registers R0 and
 **Waveform Representation:**  
 The branch condition will be evaluated and, since R0 equals R0, it will trigger a jump in the instruction sequence.
 
-![Alt text](SNAPSHOTS/BEQ_R0,R0,15.PNG)
 
 ---
 
@@ -210,7 +201,6 @@ The BNE (branch if not equal) instruction checks if R0 and R0 are not equal. Sin
 **Waveform Representation:**  
 Similar to BEQ, the condition is evaluated, but since it’s not true, the program continues to the next instruction.
 
-![Alt text](SNAPSHOTS/BNE_R0,R0,15.PNG)
 
 ---
 
@@ -220,7 +210,6 @@ This instruction loads a word from memory at the address computed by adding 2 to
 **Waveform Representation:**  
 The address calculation, memory access, and data loading into R13 will be shown.
 
-![Alt text](SNAPSHOTS/LW_R13,R1,2.PNG)
 
 ---
 
@@ -230,7 +219,6 @@ This instruction performs a bitwise OR operation between the values of registers
 **Waveform Representation:**  
 The OR operation will be displayed, and the result will be placed in R9.
 
-![Alt text](SNAPSHOTS/OR_R9,R2,R5.PNG)
 
 ---
 
@@ -240,7 +228,6 @@ This instruction performs a set-less-than operation. It compares the values of R
 **Waveform Representation:**  
 The comparison result will be displayed in R1, either 1 or 0, depending on whether R2 is less than R4.
 
-![Alt text](SNAPSHOTS/SLT_R1,R2,R4.PNG)
 
 ---
 
@@ -250,7 +237,6 @@ This instruction subtracts the value in register R2 from the value in register R
 **Waveform Representation:**  
 The difference between R1 and R2 will be calculated and stored in R7.
 
-![Alt text](SNAPSHOTS/SUB_R7,R1,R2.PNG)
 
 ---
 
@@ -260,7 +246,6 @@ This instruction stores the word from register R3 into memory at the address com
 **Waveform Representation:**  
 The address calculation, memory store, and data being written to memory will be shown.
 
-![Alt text](SNAPSHOTS/SW_R3,R1,2.PNG)
 
 ---
 
@@ -270,7 +255,6 @@ This instruction performs a bitwise XOR operation on the values in registers R1 
 **Waveform Representation:**  
 The bitwise XOR operation will be shown, and the result will be placed in R10.
 
-![Alt text](SNAPSHOTS/XOR_R10,R1,R4.PNG)
 
 ---
 
@@ -280,6 +264,5 @@ This is a representation of the entire 5-stage instruction pipeline in a process
 **Waveform Representation:**  
 The pipeline stages will show the progression of the instruction through each stage, and the PC value will increment at the correct times.
 
-![Alt text](SNAPSHOTS/Full_5_stage_instruction_pipeline_and_pc_increment_description_Waveform.PNG)
 
 ---
