@@ -1,1 +1,73 @@
+#include <ch32v00x.h>
 
+// Define GPIO pins
+#define RED_LED     GPIO_Pin_3  // PC3 (A < B)
+#define GREEN_LED   GPIO_Pin_4  // PC4 (A == B)
+#define YELLOW_LED  GPIO_Pin_5  // PC5 (A > B)
+#define BUZZER      GPIO_Pin_6  // Example: PC6
+#define LASER_SENSOR GPIO_Pin_0  // PD0 (Example sensor input)
+
+void GPIO_Config(void) {
+    GPIO_InitTypeDef GPIO_InitStructure;
+
+    // Enable GPIO clocks for port C and D
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE);
+
+    // Configure LED and buzzer as output
+    GPIO_InitStructure.GPIO_Pin = RED_LED | GREEN_LED | YELLOW_LED | BUZZER;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(GPIOC, &GPIO_InitStructure);
+
+    // Configure laser sensor as input
+    GPIO_InitStructure.GPIO_Pin = LASER_SENSOR;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;  // Pull-up input
+    GPIO_Init(GPIOD, &GPIO_InitStructure);
+}
+
+void DelayMs(uint32_t ms) {
+    Delay_Ms(ms);  // Use built-in delay function
+}
+
+void TrafficSignalControl(void) {
+    while (1) {
+        uint8_t laser = GPIO_ReadInputDataBit(GPIOD, LASER_SENSOR);
+
+        // Step 1: Red light on
+        GPIO_SetBits(GPIOC, RED_LED);
+        GPIO_ResetBits(GPIOC, GREEN_LED | YELLOW_LED);
+        if (laser == 0) GPIO_SetBits(GPIOC, BUZZER);
+        else GPIO_ResetBits(GPIOC, BUZZER);
+        DelayMs(5000);
+
+        // Step 2: Red & Yellow light on
+        GPIO_SetBits(GPIOC, RED_LED | YELLOW_LED);
+        GPIO_ResetBits(GPIOC, GREEN_LED);
+        if (laser == 0) GPIO_SetBits(GPIOC, BUZZER);
+        else GPIO_ResetBits(GPIOC, BUZZER);
+        DelayMs(2000);
+
+        // Step 3: Green light on
+        GPIO_SetBits(GPIOC, GREEN_LED);
+        GPIO_ResetBits(GPIOC, RED_LED | YELLOW_LED | BUZZER);
+        DelayMs(5000);
+
+        // Step 4: Yellow light on
+        GPIO_SetBits(GPIOC, YELLOW_LED);
+        GPIO_ResetBits(GPIOC, RED_LED | GREEN_LED);
+        if (laser == 0) GPIO_SetBits(GPIOC, BUZZER);
+        else GPIO_ResetBits(GPIOC, BUZZER);
+        DelayMs(2000);
+    }
+}
+
+int main(void) {
+    SystemCoreClockUpdate();
+    Delay_Init();
+    GPIO_Config();
+
+    TrafficSignalControl();
+
+    return 0;
+}
